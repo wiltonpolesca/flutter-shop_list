@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
+// import 'package:flutter_localizations/flutter_localizations.dart';
+//https://stackoverflow.com/questions/65182393/why-is-flutter-not-generating-the-internationalization-files
 import 'theme/themes.dart';
 
 class AppWidget extends StatelessWidget {
@@ -23,16 +23,16 @@ class AppWidget extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       home: home,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('fr'), // Fran
-        Locale('pt'), // Português
-      ],
+      // localizationsDelegates: const [
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      // ],
+      // supportedLocales: const [
+      //   Locale('en'), // English
+      //   Locale('fr'), // Fran
+      //   Locale('pt'), // Português
+      // ],
     );
   }
 }

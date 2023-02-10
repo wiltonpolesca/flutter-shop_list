@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_list/src/shared/widgets/navigation_menu.dart';
 import 'package:shop_list/src/shared/widgets/user_avatar_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,9 +10,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Map<String, IconData> get navigationItems => {
+        'Syncronization': Icons.sync,
+        'Configuration': Icons.settings,
+      };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationMenu('Options', navigationItems),
       appBar: AppBar(
         title: const Text('Shopping List'),
         actions: const [
