@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'navigation_item.dart';
+
 class NavigationMenu extends StatelessWidget {
   final String? navigationTitle;
-  final Map<String, IconData> navigations;
+  final List<NavigationItem> navigations;
 
   const NavigationMenu(this.navigationTitle, this.navigations, {super.key});
 
@@ -21,21 +23,28 @@ class NavigationMenu extends StatelessWidget {
       ),
     );
 
-    for (final element in navigations.entries) {
+    for (final element in navigations) {
       items.add(
         NavigationDrawerDestination(
-          icon: Icon(element.value),
-          label: Text(element.key),
+          icon: Icon(element.icon),
+          label: Text(element.label),
         ),
       );
     }
-    return items.isEmpty ? List<Widget>.empty() : items as List<Widget>;
+    return items.isEmpty ? List<Widget>.empty() : items;
   }
 
   @override
   Widget build(BuildContext context) {
     return NavigationDrawer(
       children: getDestinations(context),
+      onDestinationSelected: (index) {
+        final item = navigations.elementAt(index);
+        if (item.route?.isNotEmpty == true) {
+          Navigator.of(context).pop();
+          Navigator.of(context).pushNamed(item.route!);
+        }
+      },
     );
   }
 }

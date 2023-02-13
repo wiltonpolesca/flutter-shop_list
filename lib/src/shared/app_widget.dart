@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 //https://stackoverflow.com/questions/65182393/why-is-flutter-not-generating-the-internationalization-files
 import 'theme/themes.dart';
@@ -17,12 +18,15 @@ class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    Modular.setInitialRoute('/');
+
+    return MaterialApp.router(
       title: title,
       themeMode: themeMode,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: home,
+      routerDelegate: Modular.routerDelegate,
+      routeInformationParser: Modular.routeInformationParser,
       // localizationsDelegates: const [
       //   GlobalMaterialLocalizations.delegate,
       //   GlobalWidgetsLocalizations.delegate,
