@@ -6,6 +6,8 @@ class EditTaskBoardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScaffoldApp();
+    return const ScaffoldApp(
+      complementTitle: 'edit',
+    );
   }
 }

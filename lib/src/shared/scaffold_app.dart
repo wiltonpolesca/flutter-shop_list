@@ -7,8 +7,8 @@ class ScaffoldApp extends StatelessWidget {
   final Widget? floatingActionButton;
   final PreferredSizeWidget? appBar;
 
-  final String? title;
-  final String? complementTitle;
+  final String title;
+  final String complementTitle;
 
   const ScaffoldApp({
     this.drawer,
@@ -16,7 +16,7 @@ class ScaffoldApp extends StatelessWidget {
     this.appBar,
     this.floatingActionButton,
     this.title = 'Shopping List',
-    this.complementTitle,
+    this.complementTitle = '',
     super.key,
   });
 
@@ -25,9 +25,19 @@ class ScaffoldApp extends StatelessWidget {
       AppBar(
         title: Row(
           children: [
-            Text(title!),
+            Text(title),
+            const SizedBox(
+              width: 10,
+            ),
             Text(
-              complementTitle ?? '',
+              complementTitle.isEmpty == true ? '' : '-',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              complementTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],
