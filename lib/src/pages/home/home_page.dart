@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_list/src/shared/widgets/user_avatar_button.dart';
+import 'package:shop_list/src/shared/widgets/navigation_menu.dart';
+import '../../shared/scaffold_app.dart';
+import '../../shared/widgets/navigation_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,18 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<NavigationItem> get navigationItems => [
+        NavigationItem(
+          label: 'Syncronization',
+          icon: Icons.sync,
+          route: '/sync',
+        ),
+        NavigationItem(
+          label: 'Configuration',
+          icon: Icons.settings,
+          route: '/config',
+        )
+      ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Shopping List'),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 8),
-            child: UserAvatarButton(),
-          )
-        ],
-      ),
+    return ScaffoldApp(
+      drawer: NavigationMenu('Options', navigationItems),
       body: Center(
         child: Column(
           children: [
@@ -53,9 +60,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
         label: const Text('New List'),
         icon: const Icon(Icons.edit),
+        onPressed: () => Navigator.of(context).pushNamed('./edit'),
       ),
     );
   }
