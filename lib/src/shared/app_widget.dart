@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:shop_list/src/app_store.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 //https://stackoverflow.com/questions/65182393/why-is-flutter-not-generating-the-internationalization-files
 import 'theme/themes.dart';
@@ -20,11 +21,14 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Modular.setInitialRoute('/');
 
+    final appStore = context.watch<AppStore>((bind) => bind.themeMode);
+
     return MaterialApp.router(
       title: title,
-      themeMode: themeMode,
+      themeMode: appStore.themeMode.value,
       theme: lightTheme,
       darkTheme: darkTheme,
+      debugShowCheckedModeBanner: false,
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
       // localizationsDelegates: const [

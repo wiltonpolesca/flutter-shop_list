@@ -8,7 +8,7 @@ ThemeData get lightTheme => ThemeData(
           AppBarTheme(backgroundColor: _lightColorScheme.primaryContainer),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: _lightColorScheme.primary,
-        foregroundColor: Colors.white,
+        foregroundColor: _lightColorScheme.onPrimary,
       ),
       segmentedButtonTheme: _segmentedButtonThemeData,
     );

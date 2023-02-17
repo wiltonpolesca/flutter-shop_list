@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:shop_list/src/app_store.dart';
 import '../../shared/scaffold_app.dart';
 
 class ConfigurationPage extends StatelessWidget {
@@ -6,6 +8,9 @@ class ConfigurationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final appStore = context.watch<AppStore>((bind) => bind.themeMode);
+
     return ScaffoldApp(
       complementTitle: 'Configuration',
       body: Padding(
@@ -15,32 +20,32 @@ class ConfigurationPage extends StatelessWidget {
           children: [
             Text(
               'Configurations',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: textTheme.titleLarge,
             ),
             const SizedBox(
               height: 10,
             ),
             Text(
               'Theme',
-              style: Theme.of(context).textTheme.titleMedium,
+              style: textTheme.titleMedium,
             ),
             RadioListTile(
               value: ThemeMode.system,
-              groupValue: ThemeMode.system,
+              groupValue: appStore.themeMode.value,
               title: const Text('System'),
-              onChanged: (mode) {},
+              onChanged: appStore.setThemeMode,
             ),
             RadioListTile(
               value: ThemeMode.light,
-              groupValue: ThemeMode.system,
+              groupValue: appStore.themeMode.value,
               title: const Text('Light'),
-              onChanged: (mode) {},
+              onChanged: appStore.setThemeMode,
             ),
             RadioListTile(
               value: ThemeMode.dark,
-              groupValue: ThemeMode.system,
+              groupValue: appStore.themeMode.value,
               title: const Text('Dark'),
-              onChanged: (mode) {},
+              onChanged: appStore.setThemeMode,
             ),
             const SizedBox(
               height: 20,

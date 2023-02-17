@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:intl/intl.dart';
 import 'package:shop_list/src/shared/widgets/navigation_menu.dart';
+import '../../app_store.dart';
 import '../../shared/scaffold_app.dart';
 import '../../shared/widgets/navigation_item.dart';
 
@@ -11,9 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final format = DateFormat('yyyy/MM/dd hh:mm');
+  var _syncDateText = 'No syncronized';
+
   List<NavigationItem> get navigationItems => [
         NavigationItem(
-          label: 'Syncronization',
+          label: 'Syncronization ($_syncDateText)',
           icon: Icons.sync,
           route: '/sync',
         ),
@@ -26,8 +32,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final appStore = context.watch<AppStore>((bind) => bind.syncDate);
+    final syncDate = appStore.syncDate.value;
+    List<NavigationItem> navItems;
+
+    if (syncDate != null) {
+      _syncDateText = format.format(syncDate);
+    }
+    navItems = navigationItems;
+
     return ScaffoldApp(
-      drawer: NavigationMenu('Options', navigationItems),
+      drawer: NavigationMenu('Options', navItems),
       body: Center(
         child: Column(
           children: [

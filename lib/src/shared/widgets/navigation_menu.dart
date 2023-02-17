@@ -9,6 +9,7 @@ class NavigationMenu extends StatelessWidget {
   const NavigationMenu(this.navigationTitle, this.navigations, {super.key});
 
   List<Widget> getDestinations(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final items = <Widget>[];
     final navTitle =
         (navigationTitle?.isEmpty ?? true) == true ? '' : navigationTitle!;
@@ -18,16 +19,28 @@ class NavigationMenu extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
         child: Text(
           navTitle,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: textTheme.titleSmall,
         ),
       ),
     );
 
     for (final element in navigations) {
+      final subLabel = element.subLabel ?? '';
       items.add(
         NavigationDrawerDestination(
           icon: Icon(element.icon),
-          label: Text(element.label),
+          label: Row(
+            children: [
+              Text(
+                element.label,
+                style: textTheme.titleMedium,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(subLabel, style: textTheme.bodySmall),
+            ],
+          ),
         ),
       );
     }
