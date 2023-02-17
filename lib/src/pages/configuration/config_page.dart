@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shop_list/src/app_store.dart';
+import 'package:shopping_list/src/app_store.dart';
 import '../../shared/scaffold_app.dart';
 
 class ConfigurationPage extends StatelessWidget {

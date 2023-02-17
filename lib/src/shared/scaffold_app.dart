@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_list/src/shared/widgets/user_avatar_button.dart';
+import 'package:shopping_list/src/shared/widgets/user_avatar_button.dart';
 
 class ScaffoldApp extends StatelessWidget {
   final Widget? drawer;

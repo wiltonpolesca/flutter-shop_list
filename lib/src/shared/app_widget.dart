@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shop_list/src/app_store.dart';
+import 'package:shopping_list/src/app_store.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 //https://stackoverflow.com/questions/65182393/why-is-flutter-not-generating-the-internationalization-files
 import 'theme/themes.dart';
