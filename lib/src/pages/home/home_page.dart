@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/src/pages/home/widgets/task_card.dart';
 import 'package:shopping_list/src/shared/scaffold_app.dart';
+import 'package:shopping_list/src/shared/services/configuration/task_board_dto.dart';
 import 'package:shopping_list/src/shared/widgets/navigation_item.dart';
 import 'package:shopping_list/src/shared/widgets/navigation_menu.dart';
 
@@ -40,36 +42,50 @@ class _HomePageState extends State<HomePage> {
 
     return ScaffoldApp(
       drawer: NavigationMenu('Options', navigationItems),
-      body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: SegmentedButton<int>(
-                segments: const [
-                  ButtonSegment(
-                    value: 0,
-                    label: Text('All'),
-                  ),
-                  ButtonSegment(
-                    value: 1,
-                    label: Text('Pending'),
-                  ),
-                  ButtonSegment(
-                    value: 2,
-                    label: Text('Done'),
-                  ),
-                  ButtonSegment(
-                    value: 3,
-                    label: Text('Removed'),
-                  ),
-                ],
-                onSelectionChanged: (values) {},
-                selected: const {0},
-              ),
+      body: Stack(
+        children: [
+          ListView.separated(
+            padding: const EdgeInsets.fromLTRB(20, 80, 20, 100),
+            itemBuilder: (_, index) {
+              return TaskCard(TaskBoardDTO());
+            },
+            separatorBuilder: (context, index) => const SizedBox(
+              height: 10,
             ),
-          ],
-        ),
+            itemCount: 50,
+          ),
+          Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: SegmentedButton<int>(
+                    segments: const [
+                      ButtonSegment(
+                        value: 0,
+                        label: Text('All'),
+                      ),
+                      ButtonSegment(
+                        value: 1,
+                        label: Text('Pending'),
+                      ),
+                      ButtonSegment(
+                        value: 2,
+                        label: Text('Done'),
+                      ),
+                      ButtonSegment(
+                        value: 3,
+                        label: Text('Removed'),
+                      ),
+                    ],
+                    onSelectionChanged: (values) {},
+                    selected: const {0},
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('New List'),

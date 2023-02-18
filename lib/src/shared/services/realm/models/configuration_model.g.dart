@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'configuration_module.dart';
+part of 'configuration_model.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
 // **************************************************************************
 
-class ConfigurationModule extends _ConfigurationModule
+class ConfigurationModel extends _ConfigurationModel
     with RealmEntity, RealmObjectBase, RealmObject {
-  ConfigurationModule(
+  ConfigurationModel(
     String themeModeName, {
     DateTime? syncDate,
   }) {
@@ -16,7 +16,7 @@ class ConfigurationModule extends _ConfigurationModule
     RealmObjectBase.set(this, 'syncDate', syncDate);
   }
 
-  ConfigurationModule._();
+  ConfigurationModel._();
 
   @override
   String get themeModeName =>
@@ -32,19 +32,19 @@ class ConfigurationModule extends _ConfigurationModule
   set syncDate(DateTime? value) => RealmObjectBase.set(this, 'syncDate', value);
 
   @override
-  Stream<RealmObjectChanges<ConfigurationModule>> get changes =>
-      RealmObjectBase.getChanges<ConfigurationModule>(this);
+  Stream<RealmObjectChanges<ConfigurationModel>> get changes =>
+      RealmObjectBase.getChanges<ConfigurationModel>(this);
 
   @override
-  ConfigurationModule freeze() =>
-      RealmObjectBase.freezeObject<ConfigurationModule>(this);
+  ConfigurationModel freeze() =>
+      RealmObjectBase.freezeObject<ConfigurationModel>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObjectBase.registerFactory(ConfigurationModule._);
+    RealmObjectBase.registerFactory(ConfigurationModel._);
     return const SchemaObject(
-        ObjectType.realmObject, ConfigurationModule, 'ConfigurationModule', [
+        ObjectType.realmObject, ConfigurationModel, 'ConfigurationModel', [
       SchemaProperty('themeModeName', RealmPropertyType.string),
       SchemaProperty('syncDate', RealmPropertyType.timestamp, optional: true),
     ]);

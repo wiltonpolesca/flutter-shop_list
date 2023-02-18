@@ -11,9 +11,7 @@ class AppModule extends Module {
   @override
   List<Bind<Object>> get binds => [
         Bind.instance<Realm>(Realm(realmConfig)),
-        // AutoBind.singleton<Realm>(() => Realm(realmConfig)),
         AutoBind.factory<ConfigurationService>(ConfigurationServiceRealm.new),
-        // Bind.singleton((i) => AppStore(i())), --> old way to do
         AutoBind.singleton(AppStore.new),
       ];
 

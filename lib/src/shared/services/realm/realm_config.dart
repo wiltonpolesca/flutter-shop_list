@@ -1,11 +1,15 @@
 import 'package:realm/realm.dart';
-import 'models/configuration_module.dart';
+import 'models/configuration_model.dart';
+import 'models/task_model.dart';
 
 LocalConfiguration realmConfig = Configuration.local(
   [
-    ConfigurationModule.schema,
+    ConfigurationModel.schema,
+    Task.schema,
+    TaskBoard.schema,
   ],
   initialDataCallback: (realm) {
-    realm.add(ConfigurationModule('system'));
+    realm.add(ConfigurationModel('system'));
   },
+  schemaVersion: 2,
 );

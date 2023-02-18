@@ -1,6 +1,6 @@
 import 'package:realm/realm.dart';
 import 'package:shopping_list/src/shared/services/configuration/configuration_dto.dart';
-import 'package:shopping_list/src/shared/services/realm/models/configuration_module.dart';
+import '../../../shared/services/realm/models/configuration_model.dart';
 
 abstract class ConfigurationService {
   ConfigurationDTO getConfiguration();
@@ -13,7 +13,7 @@ class ConfigurationServiceRealm implements ConfigurationService {
 
   ConfigurationServiceRealm(this.realm);
 
-  ConfigurationModule get _getConfig => realm.all<ConfigurationModule>().first;
+  ConfigurationModel get _getConfig => realm.all<ConfigurationModel>().first;
 
   @override
   void deleteAll() {
